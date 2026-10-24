@@ -1,0 +1,337 @@
+
+@charset "UTF-8";
+
+/* ===== CONFIGURAÇÕES GERAIS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fundo: #0b1120;
+    --card: rgba(23, 37, 64, 0.75);
+    --azul: #38bdf8;
+    --ciano: #22d3ee;
+    --texto: #e2e8f0;
+    --texto-secundario: #94a3b8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 20px;
+
+    font-family: "Courier New", Courier, monospace;
+    color: var(--texto);
+    text-align: center;
+
+    background: linear-gradient(
+        -45deg,
+        #0b1120,
+        #172554,
+        #083344,
+        #111827
+    );
+
+    background-size: 400% 400%;
+    animation: gradiente 15s ease infinite;
+}
+
+/* ===== ANIMAÇÃO DO FUNDO ===== */
+@keyframes gradiente {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ===== CABEÇALHO ===== */
+header {
+    max-width: 800px;
+    margin: 20px auto 40px;
+
+    animation: aparecer 1s ease both;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    color: var(--azul);
+
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+
+    animation: brilho 3s ease-in-out infinite alternate;
+}
+
+h2 {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--texto);
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+main {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 30px;
+
+    background: var(--card);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 24px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+
+    animation: aparecer 1s ease 0.2s both;
+}
+
+main p {
+    margin-bottom: 25px;
+    color: var(--texto-secundario);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* ===== LISTA DE TECNOLOGIAS ===== */
+ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+
+    margin: 25px 0 35px;
+    list-style: none;
+}
+
+ul a {
+    display: block;
+    height: 100%;
+
+    color: var(--texto);
+    text-decoration: none;
+
+    animation: subir 0.6s ease both;
+}
+
+/* Atraso progressivo na entrada dos cards */
+ul a:nth-child(1) { animation-delay: 0.1s; }
+ul a:nth-child(2) { animation-delay: 0.2s; }
+ul a:nth-child(3) { animation-delay: 0.3s; }
+ul a:nth-child(4) { animation-delay: 0.4s; }
+ul a:nth-child(5) { animation-delay: 0.5s; }
+ul a:nth-child(6) { animation-delay: 0.6s; }
+
+li {
+    height: 100%;
+    padding: 18px 10px;
+
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 14px;
+
+    font-weight: bold;
+    overflow-wrap: anywhere;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+ul a:hover li {
+    transform: translateY(-7px) scale(1.03);
+
+    background: rgba(8, 145, 178, 0.2);
+    border-color: var(--ciano);
+
+    box-shadow:
+        0 8px 25px rgba(34, 211, 238, 0.15),
+        0 0 12px rgba(34, 211, 238, 0.1);
+}
+
+ul a:focus-visible,
+footer a:focus-visible {
+    outline: 2px solid var(--ciano);
+    outline-offset: 5px;
+    border-radius: 5px;
+}
+
+/* ===== SEÇÃO DO DRONE ===== */
+main div {
+    margin-top: 30px;
+    padding: 22px 15px;
+
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 18px;
+
+    color: var(--ciano);
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+/* Imagem do drone */
+main div img {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+
+    margin: 25px auto 5px;
+
+    border: 2px solid rgba(56, 189, 248, 0.5);
+    border-radius: 20px;
+
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+
+    animation: flutuar 4s ease-in-out infinite;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+/* O drone se aproxima ao passar o mouse */
+main div img:hover {
+    transform: scale(1.06) rotate(-2deg);
+
+    border-color: var(--ciano);
+
+    box-shadow:
+        0 0 25px rgba(34, 211, 238, 0.4),
+        0 0 50px rgba(56, 189, 248, 0.15);
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+    margin-top: 35px;
+    animation: aparecer 1s ease 0.8s both;
+}
+
+footer a {
+    display: inline-block;
+    padding: 12px 25px;
+
+    color: var(--azul);
+    text-decoration: none;
+
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 30px;
+
+    background: rgba(15, 23, 42, 0.5);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+footer a:hover {
+    color: white;
+    background: #087f8c;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 25px rgba(34, 211, 238, 0.2);
+}
+
+footer h3 {
+    font-size: 1rem;
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subir {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes brilho {
+    from {
+        text-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+    }
+
+    to {
+        text-shadow:
+            0 0 20px rgba(56, 189, 248, 0.7),
+            0 0 35px rgba(34, 211, 238, 0.2);
+    }
+}
+
+/* ===== CELULARES ===== */
+@media (max-width: 480px) {
+    body {
+        padding: 25px 14px;
+    }
+
+    main {
+        padding: 22px 15px;
+    }
+
+    ul {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    li {
+        padding: 16px 10px;
+    }
+
+    main div img {
+        max-width: 100%;
+    }
+}
+
+/* Respeita quem prefere menos animações */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
